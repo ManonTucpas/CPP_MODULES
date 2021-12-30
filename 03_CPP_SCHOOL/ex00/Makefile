@@ -1,16 +1,24 @@
-NAME	=	claptrap
+NAME	=	diamondtrap
 
-CC		=	c++ -Wall -Wextra -Werror -std=c++98
+CC		=	c++ -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
+
+INC 	= -I./includes
 
 SRCS	=	main.cpp \
 			ClapTrap.cpp \
-			
-OBJS	=	${SRCS:.c=.o}
+			ClapTrapGame.cpp \
+			ClapTrapSetGet.cpp \
+
+
+FIL = 		$(addprefix srcs/, $(SRCS))
+
+OBJS	=	${FIL:.c=.o}
+
 
 all:		${NAME}
 
 $(NAME)	: ${OBJS}
-				${CC} ${OBJS} -o $(NAME)
+				${CC} ${INC} ${OBJS} -o $(NAME)
 
 clean:		
 

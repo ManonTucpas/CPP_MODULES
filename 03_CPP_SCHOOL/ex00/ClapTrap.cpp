@@ -14,26 +14,17 @@ ClapTrap::~ClapTrap(void)
 	return ;
 }
 
-void	ClapTrap::attack(std::string const & target)
+ClapTrap::ClapTrap( ClapTrap const &copy)
 {
-	std::cout << "ClapTrap " << _name << " attacks " << target << std::endl;
-	std::cout << "ClapTrap "  << _name << " Hitpoints before attack : " << _hitPoints << std::endl;
+	*this = copy;
+	std::cout << "ClapTrap " << _name << " has been copied" << std::endl;
 	return ;
 }
 
-void	ClapTrap::takeDamage(unsigned int amount)
+
+ClapTrap&	ClapTrap::operator=(const ClapTrap& a)
 {
-	
-	std::cout << "ClapTrap "  << _name << " has taken " << amount << " points of damage! "  << std::endl;
-	_attackDamage = amount;
-	_hitPoints -= _attackDamage;
-	std::cout << "ClapTrap "  << _name << " Hitpoints after attack : " << _hitPoints << std::endl;
-	return ;	
+	std::cout << "ClapTrap assignation operator called : " << getName() << " is : " << a.getName() <<  std::endl;
+	return *this;
 }
 
-void	ClapTrap::beRepaired(unsigned int amount)
-{	
-	_energyPoints += amount;
-	std::cout << "ClapTrap " << _name << " has been charged and has " << _energyPoints << " energy points" << std::endl;
-	return ;
-}
