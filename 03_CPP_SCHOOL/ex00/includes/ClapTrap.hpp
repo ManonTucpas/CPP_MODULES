@@ -11,24 +11,25 @@ class   ClapTrap
 		ClapTrap(std::string name);
 		~ClapTrap(void);
 
-		//constructeur par copie
+		/* constructeur par copie */
 		ClapTrap( ClapTrap const &copy);
 
-		//overload d'operateur d'assignation
+		/* overload d'operateur d'assignation */
 		ClapTrap& 				operator=(const ClapTrap& a);
 		
 		void			attack(std::string const& target);
 		void			takeDamage(unsigned int amount);
 		void			beRepaired(unsigned int amount);
 
-		void			setName(std::string);
-		void			getEP(void) const;
-		void			getHP(void) const;
-		void			getName(void) const;
-		void			getAD(void) const;
-		unsigned int	setEP(unsigned int ep);
-		unsigned int	setHP(unsigned int hp);
-		unsigned int	setAD(unsigned int ad);
+		/* SET && GET */
+		void			setName(std::string name);
+		void			setEP(unsigned int ep);
+		void			setHP(unsigned int hp);
+		void			setAD(unsigned int ad);
+		std::string		getName(void) const;
+		unsigned int	getEP(void) const;
+		unsigned int	getHP(void) const;
+		unsigned int	getAD(void) const;
 
 	private :
 

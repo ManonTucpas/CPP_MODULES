@@ -1,4 +1,4 @@
-NAME	=	diamondtrap
+NAME	=	claptrap
 
 CC		=	c++ -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
 

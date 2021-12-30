@@ -1,41 +1,46 @@
-#include "ClapTrap.hpp"
+#include "../includes/ClapTrap.hpp"
 
-void			ClapTrap::setName(std::string)
+void			ClapTrap::setName(std::string name)
 {
-
+    _name = name;
+    return ;
 }
 
-void			ClapTrap::getEP(void) const;
+void			ClapTrap::setEP(unsigned int ep)
 {
-
+    _energyPoints = ep;
+    return ;
 }
 
-void			ClapTrap::getHP(void) const;
 
-
+void	ClapTrap::setHP(unsigned int hp)
+{
+    _hitPoints = hp;
+    return ;
 }
 
-void			ClapTrap::getName(void) const
+void	ClapTrap::setAD(unsigned int ad)
 {
-
+    _attackDamage = ad;
+    return ;
 }
 
-void			ClapTrap::getAD(void) const
+unsigned int			ClapTrap::getHP(void) const
 {
-
+    return (_hitPoints);
 }
 
-unsigned int	ClapTrap::setEP(unsigned int ep)
+std::string			ClapTrap::getName(void) const
 {
-
+    return (_name);
 }
 
-unsigned int	ClapTrap::setHP(unsigned int hp)
+unsigned int			ClapTrap::getAD(void) const
 {
-
+    return (_attackDamage);
 }
 
-unsigned int	ClapTrap::setAD(unsigned int ad)
+unsigned int	ClapTrap::getEP(void) const
 {
-
+    return (_energyPoints);
 }

@@ -1,4 +1,4 @@
-#include "ClapTrap.hpp"
+#include "../includes/ClapTrap.hpp"
 
 ClapTrap::ClapTrap(std::string name) : _name(name) , _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
@@ -21,33 +21,14 @@ ClapTrap::ClapTrap( ClapTrap const &copy)
 	return ;
 }
 
-
 ClapTrap&	ClapTrap::operator=(const ClapTrap& a)
 {
-	std::cout << "ClapTrap assignation operator called"
+	std::cout << "ClapTrap assignation operator called : ";
+	std::cout << getName() << " is : " << a.getName() <<  std::endl;
+	setName(a._name);
+	setHP(a._hitPoints);
+	setAD(a._attackDamage);
+	setEP(a._energyPoints);
 	return *this;
 }
 
-void	ClapTrap::attack(std::string const & target)
-{
-	std::cout << "ClapTrap " << _name << " attacks " << target << std::endl;
-	std::cout << "ClapTrap "  << _name << " Hitpoints before attack : " << _hitPoints << std::endl;
-	return ;
-}
-
-void	ClapTrap::takeDamage(unsigned int amount)
-{
-	
-	std::cout << "ClapTrap "  << _name << " has taken " << amount << " points of damage! "  << std::endl;
-	_attackDamage = amount;
-	_hitPoints -= _attackDamage;
-	std::cout << "ClapTrap "  << _name << " Hitpoints after attack : " << _hitPoints << std::endl;
-	return ;	
-}
-
-void	ClapTrap::beRepaired(unsigned int amount)
-{	
-	_energyPoints += amount;
-	std::cout << "ClapTrap " << _name << " has been charged and has " << _energyPoints << " energy points" << std::endl;
-	return ;
-}
