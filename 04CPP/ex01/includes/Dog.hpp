@@ -2,6 +2,7 @@
 # define _DOG_HPP_
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 # include <iostream>
 # include <string>
 
@@ -15,6 +16,11 @@ class Dog : public Animal
 		Dog & operator=(Dog const& a);
 
 		void	makeSound(void) const;
+		Brain*	getBrain(void) const;
+
+	private :
+
+		Brain*	_brain;
 };
 
 #endif

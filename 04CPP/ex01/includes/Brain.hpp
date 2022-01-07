@@ -17,9 +17,6 @@ class Brain
 		/* Assignation overload operator */
 		Brain&			operator=(const Brain& a);
 
-		// std::string		getIdeas(void) const;
-		// void			    setIdeas(std::string type);
-
 	protected :
 
 		std::string 	_ideas[100];

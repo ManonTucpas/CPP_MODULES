@@ -1,6 +1,6 @@
 NAME	=	animal
 
-CC		=	c++ -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address #-Wshadow -Wno -shadow 
+CC		=	c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 INC 	= -I./includes
 

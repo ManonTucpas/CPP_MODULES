@@ -9,6 +9,7 @@ class Animal
 	public :
 
 		Animal(void);
+		Animal(std::string type);
 		virtual ~Animal(void);
 
 		/* Copy constructor */
@@ -19,8 +20,7 @@ class Animal
 
 		std::string		getType(void) const;
 		void			setType(std::string type);
-
-		virtual void			makeSound(void) const;
+		virtual void	makeSound(void) const;
 
 	protected :
 
