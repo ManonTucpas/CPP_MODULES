@@ -27,6 +27,7 @@ class Bureaucrat
 		Bureaucrat(Bureaucrat const& cpy);
 		Bureaucrat&				operator=(const Bureaucrat& a);
 
+		//deux fois const ici a checker !!!
 		std::string const &		getName(void) const;
 		unsigned int			getGrade(void) const;
 		void					upGrade(void);

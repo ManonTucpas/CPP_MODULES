@@ -47,6 +47,7 @@ unsigned int Bureaucrat::getGrade(void) const
 	return (_grade);
 }
 
+//2 fois const ici a checker!!!
 std::string	const & Bureaucrat::getName(void) const
 {
 	return (_name);
