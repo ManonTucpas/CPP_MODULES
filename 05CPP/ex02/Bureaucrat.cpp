@@ -47,7 +47,6 @@ unsigned int Bureaucrat::getGrade(void) const
 	return (_grade);
 }
 
-//2 fois const ici a checker!!!
 std::string	const & Bureaucrat::getName(void) const
 {
 	return (_name);
@@ -79,6 +78,21 @@ void	Bureaucrat::signForm(Form & form)
 	catch(const std::exception& e)
 	{
 		std::cout << _name << " cannot sign because ";
+		std::cerr << e.what() << '\n';
+	}
+	
+}
+
+void	Bureaucrat::executeForm(Form & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getFormName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << _name << " failed to execute " << form.getFormName() << " because ";
 		std::cerr << e.what() << '\n';
 	}
 	

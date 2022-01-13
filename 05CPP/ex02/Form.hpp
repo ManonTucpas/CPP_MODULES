@@ -26,9 +26,14 @@ class Form
 		public :
 			virtual const char* what() const throw();
 	};
+	class	NotSignedException : public std::exception 
+	{
+		public :
+			virtual const char* what() const throw();
+	};
 	public:
 		Form(const std::string name, const unsigned int gToSign, const unsigned int gToExec);
-		~Form();
+		virtual ~Form();
 		Form(Form const& cpy);
 		Form&					operator=(const Form& a);
 		unsigned int			getGradeSign(void) const;
@@ -36,10 +41,13 @@ class Form
 		std::string const&		getFormName(void) const;
 		void					beSigned(Bureaucrat& a);
 		bool 					getSignedStatus(void) const;
+		virtual void			execute(const Bureaucrat& b) const = 0;
+		void					checkExecForm(const Bureaucrat& a) const;
 
 	
-	private:
+	protected:
 		
+		Form(void);
 		const std::string     _formName;
 		bool           		  _signed;
 		const unsigned int    _gradeToSign;

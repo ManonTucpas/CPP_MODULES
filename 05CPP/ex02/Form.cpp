@@ -14,6 +14,11 @@ const char*	Form::AlreadySignedException::what() const throw()
 	return ("ERROR: form already signed");
 }
 
+const char*	Form::NotSignedException::what() const throw()
+{
+	return ("ERROR: form not signed");
+}
+
 Form::Form(const std::string name, const unsigned int gToSign, const unsigned int gToExec) : _formName(name), _gradeToSign(gToSign), _gradeToExec(gToExec)
 {
     _signed = false;
@@ -78,7 +83,15 @@ void		Form::beSigned(Bureaucrat& a)
 	else
 		throw GradeTooLowException();
 	return;
+}
 
+void		Form::checkExecForm(const Bureaucrat& a) const
+{
+	if(_signed == false)
+		throw NotSignedException();
+	if (a.getGrade() > getGradeToExec())
+		throw GradeTooLowException();
+	return ;
 }
 
 std::ostream & operator<<(std::ostream & out, Form const & src)

@@ -10,13 +10,19 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target) :Form::
 	return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& cpy) : Form(cpy.getFormName(), cpy.getGradeSign(), cpy.getGradeToExec(), cpy.getSignedStatus(), cpy.getTarget())
+ShrubberyCreationForm::~ShrubberyCreationForm(void)
+{
+	return ;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& cpy) : Form(cpy.getFormName(), cpy.getGradeSign(), cpy.getGradeToExec())//, cpy.getSignedStatus(), cpy.getTarget())
 {
 	return ;
 }
 
 ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm const& a)
 {
+	(void)a;
 	return *this;
 }
 
@@ -28,24 +34,26 @@ std::string	const& ShrubberyCreationForm::getTarget(void) const
 
 void		ShrubberyCreationForm::execute(const Bureaucrat& b) const
 {
+	Form::checkExecForm(b);
 	std::string filename = _target + "_shruberry";
-	std::ofstream outfile(filename);
-	outfile << "					@\n
-                              @ @ @  @ @ @\n
-                            @  @\/@ @ /__@\n
-                            @@@ @\ / @/  @ @\n
-                           @\  \/@| @ | @\n
-                          @__\@ \ |/ \| / @\n
-                             __\|@|  ||/__/@\n
-                            /  \ \\  / /__\n
-                           @    \  \/ /   @\n
-                                 |"" |\n
-                                 |"" |\n
-                                 |"" |\n
-                                ~|"" |~\n
-                            ~~~~       ~~~~\n
-                          ~~               ~~~\n" <<std::endl;
+	std::ofstream outfile(filename.c_str());
+	outfile <<  "         .     .  .      +     .      .          .\n"
+				   "     .       .      .     #       .           .\n"
+				   "        .      .         ###            .      .      .\n"
+				   "      .      .   \"#:. .:##\"##:. .:#\"  .      .\n"
+				   "          .      . \"####\"###\"####\"  .\n"
+				   "       .     \"#:.    .:#\"###\"#:.    .:#\"  .        .       .\n"
+				   "  .             \"#########\"#########\"        .        .\n"
+				   "        .    \"#:.  \"####\"###\"####\"  .:#\"   .       .\n"
+				   "     .     .  \"#######\"\"##\"##\"\"#######\"                  .\n"
+				   "                .\"##\"#####\"#####\"##\"           .      .\n"
+				   "    .   \"#:. ...  .:##\"###\"###\"##:.  ... .:#\"     .\n"
+				   "      .     \"#######\"##\"#####\"##\"#######\"      .     .\n"
+				   "    .    .     \"#####\"\"#######\"\"#####\"    .      .\n"
+				   "            .     \"      000      \"    .     .\n"
+				   "       .         .   .   000     .        .       .\n"
+				   ".. .. ..................O000O........................ ...... ... " <<std::endl;
 
 	outfile.close();
-
+	return ;
 }

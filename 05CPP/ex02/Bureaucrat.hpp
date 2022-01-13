@@ -36,6 +36,8 @@ class Bureaucrat
 		void					upGrade(void);
 		void					downGrade(void);
 		void					signForm(Form & form);
+		void					executeForm(Form & form);
+
 
 	private:
 

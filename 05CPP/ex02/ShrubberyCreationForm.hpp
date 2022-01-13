@@ -14,7 +14,7 @@ class ShrubberyCreationForm : public Form
 	ShrubberyCreationForm(ShrubberyCreationForm const& cpy);
 	ShrubberyCreationForm & operator=(ShrubberyCreationForm const& a);
 	std::string	const& 		getTarget(void) const;
-	void					execute(const Bureaucrat& b) const;
+	virtual void			execute(const Bureaucrat& b) const;
 
 	private: 
 

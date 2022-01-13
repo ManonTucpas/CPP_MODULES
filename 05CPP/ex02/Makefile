@@ -5,10 +5,10 @@ CC		=	c++ -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 SRCS	=	main.cpp \
 			Bureaucrat.cpp \
 			Form.cpp \
-			PresidentialPardonForm.cpp \
-			RobotomyRequestForm.cpp \
-			ShrubberyCreationForm.cpp
-
+			ShrubberyCreationForm.cpp \
+			#PresidentialPardonForm.cpp \
+			#RobotomyRequestForm.cpp \
+			
 OBJS	=	${SRCS:.c=.o}
 
 
