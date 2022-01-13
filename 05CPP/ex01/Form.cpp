@@ -9,8 +9,12 @@ const char*	Form::GradeTooLowException::what() const throw()
 {
 	return ("ERROR: Grade too low");
 }
+const char*	Form::AlreadySignedException::what() const throw()
+{
+	return ("ERROR: form already signed");
+}
 
-Form::Form(const std::string name, const unsigned int gToSign, const unsigned int gToExec) : _formName(name), _gradeToExec(gToExec), _gradeToSign(gToSign)
+Form::Form(const std::string name, const unsigned int gToSign, const unsigned int gToExec) : _formName(name), _gradeToSign(gToSign), _gradeToExec(gToExec)
 {
     _signed = false;
     if (_gradeToSign < 1 || _gradeToExec < 1)
@@ -27,9 +31,8 @@ Form::~Form()
 	return ;
 }
 
-Form::Form(Form const& cpy)
+Form::Form(Form const& cpy) : _formName(cpy.getFormName()), _signed(getSignedStatus()), _gradeToSign(cpy.getGradeSign()), _gradeToExec(cpy.getGradeToExec())
 {
-	*this = cpy;
 	std::cout << "Form created (constructor by copy)" << std::endl;
 	return ;
 }
@@ -61,9 +64,28 @@ std::string const& Form::getFormName(void) const
 	return (_formName);
 }
 
+bool Form::getSignedStatus(void) const
+{
+	return _signed;
+}
+
+void		Form::beSigned(Bureaucrat& a)
+{
+	if (_signed == true)
+		throw AlreadySignedException();
+	if (a.getGrade() <= _gradeToSign)
+		_signed = true;
+	else
+		throw GradeTooLowException();
+	return;
+
+}
 
 std::ostream & operator<<(std::ostream & out, Form const & src)
 {
-	out << src.getFormName() << ", Form [....] " << src.getGradeSign() << std::endl;
+	if (src.getSignedStatus() == true)
+		out << src.getFormName() << " - status:  " << " SIGNED | [Grade for signed : " << src.getGradeSign() << " - Grade for execution : " << src.getGradeToExec() << "]" << std::endl;
+	else
+		out << src.getFormName() << " - status:  " << " NOT SIGNED | [Grade for signed : " << src.getGradeSign() << " - Grade for execution : " << src.getGradeToExec() << "]" << std::endl;
 	return (out);
 }

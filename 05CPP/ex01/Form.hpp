@@ -5,7 +5,9 @@
 # include <string>
 # include "Bureaucrat.hpp"
 
-class Form : public Bureaucrat
+class Bureaucrat;
+
+class Form
 {
 
 	class	GradeTooLowException : public std::exception 
@@ -19,14 +21,22 @@ class Form : public Bureaucrat
 		public :
 			virtual const char* what() const throw();
 	};
+	class	AlreadySignedException : public std::exception 
+	{
+		public :
+			virtual const char* what() const throw();
+	};
 	public:
 		Form(const std::string name, const unsigned int gToSign, const unsigned int gToExec);
 		~Form();
 		Form(Form const& cpy);
-		Form&	operator=(const Form& a);
-		unsigned int	getGradeSign(void) const;
-		unsigned int	getGradeToExec(void) const;
+		Form&					operator=(const Form& a);
+		unsigned int			getGradeSign(void) const;
+		unsigned int			getGradeToExec(void) const;
 		std::string const&		getFormName(void) const;
+		void					beSigned(Bureaucrat& a);
+		bool 					getSignedStatus(void) const;
+
 	
 	private:
 		
@@ -34,9 +44,10 @@ class Form : public Bureaucrat
 		bool           		  _signed;
 		const unsigned int    _gradeToSign;
 		const unsigned int    _gradeToExec;
+		
 
 };
 
-std::ostream & operator<<(std::ostream & out, Form const & src)
+std::ostream & operator<<(std::ostream & out, Form const & src);
 
 #endif

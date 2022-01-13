@@ -4,6 +4,9 @@
 # include <stdexcept>
 # include <iostream>
 # include <string>
+# include "Form.hpp" 
+
+class Form;
 
 class Bureaucrat
 {
@@ -32,6 +35,7 @@ class Bureaucrat
 		unsigned int			getGrade(void) const;
 		void					upGrade(void);
 		void					downGrade(void);
+		void					signForm(Form & form);
 
 	private:
 
