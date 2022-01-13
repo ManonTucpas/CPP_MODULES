@@ -12,7 +12,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target) :Form::
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
-	return ;
+	return;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& cpy) : Form(cpy.getFormName(), cpy.getGradeSign(), cpy.getGradeToExec())//, cpy.getSignedStatus(), cpy.getTarget())

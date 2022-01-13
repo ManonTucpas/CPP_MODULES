@@ -1,13 +1,13 @@
 NAME	=	bureaucrat
 
-CC		=	c++ -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
+CC		=	c++ -Wall -Wextra -Werror -std=c++98  #-fsanitize=address 
 
 SRCS	=	main.cpp \
 			Bureaucrat.cpp \
 			Form.cpp \
 			ShrubberyCreationForm.cpp \
-			#PresidentialPardonForm.cpp \
-			#RobotomyRequestForm.cpp \
+			RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp \
 			
 OBJS	=	${SRCS:.c=.o}
 
@@ -20,7 +20,7 @@ $(NAME)	: ${OBJS}
 clean:		
 
 fclean:		clean
-				rm -f ${NAME}
+				rm -f ${NAME} SHRU_shruberry
 
 re:			fclean all
 
