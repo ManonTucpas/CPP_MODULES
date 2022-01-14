@@ -37,7 +37,6 @@ class Bureaucrat
 		const std::string		_name;
 		unsigned int			_grade;
 
-
 };
 
 std::ostream & operator<<(std::ostream & out, Bureaucrat const & src);

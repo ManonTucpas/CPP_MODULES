@@ -71,9 +71,15 @@ int main()
 	std::cout << "4" << std::endl;
 	Ma.signForm(pres);
 	Ma.executeForm(pres);
+	
+	
 	std::cout << "\n----TEST FOR INTERN----\n" << std::endl;
 	Intern Random;
 	Form *rrf;
+	Form *rrf1;
+	Form *rrf2;
+	Form *rrf3;
+
 	std::cout << "\n1 _ Form random" << std::endl;
 	try
 	{
@@ -86,7 +92,7 @@ int main()
 	std::cout << "\n2 _ Form robot" << std::endl;
 	try
 	{
-		rrf = Random.makeForm("robotomy request", "Bender");
+		rrf1 = Random.makeForm("robotomy request", "Bender");
 
 	}
 	catch(const std::exception& e)
@@ -96,8 +102,7 @@ int main()
 	std::cout << "\n3 _ Form president" << std::endl;
 	try
 	{
-		rrf = Random.makeForm("presidential pardon", "Bender");
-	
+		rrf2 = Random.makeForm("presidential pardon", "Bender");
 	}
 	catch(const std::exception& e)
 	{
@@ -106,13 +111,21 @@ int main()
 	std::cout << "\n4 _ Form shruberry creation" << std::endl;
 	try
 	{
-		rrf = Random.makeForm("shruberry creation", "Bender");
+		rrf3 = Random.makeForm("shruberry creation", "Bender");
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
-
+	Bureaucrat Kat("Kat", 2);
+	Kat.signForm(*rrf1);
+	Kat.executeForm(*rrf1);
+	Kat.signForm(*rrf2);
+	Kat.executeForm(*rrf2);
+	Kat.signForm(*rrf3);
+	Kat.executeForm(*rrf3);
+	delete rrf1;
+	delete rrf2;
+	delete rrf3;
 	return (0);
 }

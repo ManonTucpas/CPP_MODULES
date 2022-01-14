@@ -9,7 +9,8 @@
 # include "ShrubberyCreationForm.hpp"
 # include "RobotomyRequestForm.hpp"
 
-class Form;
+class 		Form;
+static int 	index;
 
 class   Intern
 {

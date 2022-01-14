@@ -6,8 +6,6 @@ SRCS	=	main.cpp \
 			Bureaucrat.cpp \
 			Form.cpp \
 
-#FIL = 		$(addprefix srcs/, $(SRCS))
-
 OBJS	=	${SRCS:.c=.o}
 
 

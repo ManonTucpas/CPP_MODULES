@@ -1,6 +1,6 @@
 NAME	=	bureaucrat
 
-CC		=	c++ -Wall -Wextra -Werror -std=c++98  #-fsanitize=address 
+CC		=	c++ -Wall -Wextra -Werror -std=c++98 #-fsanitize=address 
 
 SRCS	=	main.cpp \
 			Bureaucrat.cpp \

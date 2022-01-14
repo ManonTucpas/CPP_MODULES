@@ -62,7 +62,7 @@ void	Bureaucrat::downGrade(void)
 
 void	Bureaucrat::upGrade(void)
 {
-	if (_grade -1 < 1)
+	if (_grade - 1 < 1)
 		throw GradeTooHighException();
 	else
 		_grade -= 1;

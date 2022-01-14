@@ -47,7 +47,6 @@ unsigned int Bureaucrat::getGrade(void) const
 	return (_grade);
 }
 
-//2 fois const ici a checker!!!
 std::string	const & Bureaucrat::getName(void) const
 {
 	return (_name);
@@ -81,7 +80,6 @@ void	Bureaucrat::signForm(Form & form)
 		std::cout << _name << " cannot sign because ";
 		std::cerr << e.what() << '\n';
 	}
-	
 }
 
 std::ostream & operator<<(std::ostream & out, Bureaucrat const & src)

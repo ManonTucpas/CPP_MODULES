@@ -49,8 +49,6 @@ Form& Form::operator=(const Form& a)
     const_cast<unsigned int&>(_gradeToSign) = a.getGradeSign();
 	//below : cast _name to a non const std::string
 	const_cast<std::string&>(_formName) = a.getFormName();
-
-    // voir ce qu'il faut faire pour le bool signed
 	return *this;
 }
 

@@ -63,7 +63,7 @@ int     Intern::getLevel(std::string level)
 Form*	Intern::makeForm(std::string name, std::string target)
 {
 	Form*	form;
-	int 	index;
+	//int 	index;
 	
 	index = getLevel(name);
 	if (index != -1)
