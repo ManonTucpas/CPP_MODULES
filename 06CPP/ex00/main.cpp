@@ -12,9 +12,8 @@ int main(int ac, char **av)
 	else
 	{
 		Convert arg(av[1]);
-		arg.findType();
-		// if (arg.getType() == "impossible")
-		// 	std::cout << "Impossible to convert this string" << std::endl;
+		// arg.findType();
+		arg.whatType();
 	}
 	return (0);
 }

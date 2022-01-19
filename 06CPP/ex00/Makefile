@@ -1,4 +1,4 @@
-NAME	=	scalar_conversion
+NAME	=	convert
 
 CC		=	c++ -Wall -Wextra -Werror -std=c++98 #-fsanitize=address 
 

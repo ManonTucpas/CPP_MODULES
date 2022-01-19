@@ -1,6 +1,6 @@
 #include "Convert.hpp"
 
-Convert::Convert(std::string input) : _input(input), _size(_input.size())
+Convert::Convert(std::string input) : _input(input)
 {
 	return ;
 }
@@ -19,7 +19,6 @@ Convert::Convert(Convert const& cpy)
 Convert&			Convert::operator=(const Convert& a)
 {
 	_input = a.getInput();
-	_size = a.getSize();
 	_type = a.getType();
 	return *this;
 }	
@@ -34,87 +33,93 @@ std::string			Convert::getType(void) const
 	return (_type);
 }
 
-unsigned int		Convert::getSize(void) const
+std::string			Convert::findType(void)
 {
-	return (_size);
-}
-
-void			Convert::findType(void)
-{
+	std::string 	input = _input;
 	unsigned int	count = 0;
 	unsigned int	i = 0;
 	unsigned int	dot = 0;
 	unsigned int	f = 0;
- 
-	if (_size == 1 && std::isdigit(_input[0]) == 0 && std::isprint(_input[0]))
-		_type = "CHAR";
-		//convertChar();
-	if (_input == "-inff" || _input == "+ inff" || _input == "nanf")
-		_type = "FLOAT";
-		//convertFloat();
-	if (_input == "-inf" || _input == "+inf" || _input == "nan")
-		_type = "DOUBLE";
-		//onvertDouble();
-	if (_input[0] == '-' || isdigit(_input[0]))
-	{
-		if (_input[0] == '-')
-			i = 1;
-		while (i < _size)
-		{
-			if (!isdigit(_input[i]))
-			{
-				if (_input[i] == '.')
-					dot = i;
-				if (_input[i] == 'f')
-					f = i;
-				count++;
-			}
-			i++;
-		}
-		if (count == 0)
-			_type = "INT";
-			//convertInt();
-		else if (dot > 0 && dot < (_size - 1) && count == 1)
-			_type = "DOUBLE";
-			//convertDouble();
-		
-		else if (dot > 0 && dot < (_size - 2) && count == 2 && f == _size - 1)
-			_type = "FLOAT";
-			//convertFloat();
-		else
-			_type = "NONE";
-		
-	}
+	unsigned int 	size  = input.size();
 
-	return  ;
+	if (size == 1 && std::isdigit(input[0]) == 0 && std::isprint(input[0]))
+		return (_type = "CHAR");
+	if (input[0] == '-' || input[0] == '+')
+		input.erase(0, 1);
+ 	if (input == " inf" || input == " inff")
+		input.erase(0, 1);
+	if (input == "inff" || input == "nanf")
+		return (_type = "FLOAT");
+	if (input == "inf" || input == "nan")
+		return (_type = "DOUBLE");
+	size  = input.size();
+	while (i < size)
+	{
+		if (!isdigit(input[i]))
+		{
+			if (input[i] == '.')
+				dot = i;
+			if (input[i] == 'f')
+				f = i;
+			count++;
+		}
+		i++;
+	}
+	if (count == 0)
+		return (_type = "INT");
+	else if (dot > 0 && dot < (size - 1) && count == 1)
+		return (_type = "DOUBLE");
+	else if (dot > 0 && dot < (size - 2) && count == 2 && f == size - 1)
+		return (_type = "FLOAT");
+	return (NULL);
 }
 
 unsigned int	Convert::getIndex(void)
 {
-	char 	tab[5] = {"CHAR", "INT", "FLOAT", "DOUBLE", "NONE"};
-	int		index = 0;
-
-	while(index < 4)
+	std::string tab[6] = {"CHAR", "INT", "FLOAT", "DOUBLE", "NONE"};
+	int			i;
+	
+	for (i = 0; i < 5; i++)
 	{
-		if (_type == tab[index])
-			return (index + 1);
-		index++;
+		if (_type == tab[i])
+			return (i + 1);
 	}
 	return (-1);
 }
 
 void			Convert::whatType(void)
 {
-
+	findType();
+	int i = getIndex();
+	if (i != -1)
+	{
+		switch(i)
+		{
+			case 1:
+				convertChar();
+				break;
+			case 2:
+				convertInt();
+				break;
+			case 3:
+				convertFloat();
+				break;
+			case 4:
+				convertDouble();
+				break;
+			default:
+				std::cout << "Wrong argument for conversion" << std::endl;
+		}
+		return ;
+	}
 }
-
 
 void			Convert::convertChar(void)
 {
 	char c = (_input.c_str()[0]);
-	std::cout << "CHAR  : " << c << std::endl;
+	std::cout << "CHAR  : \'" << c << "\'" << std::endl;
 	std::cout << "INT   : " << static_cast<int>(c) << std::endl;
-	std::cout << "FLOAT : " << static_cast<float>(c) << std::endl;
+	std::cout << "FLOAT : " << static_cast<float>(c) << "f" << std::endl;
 	std::cout << "DOUBLE: " << static_cast<double>(c) << std::endl;
 }
 void			Convert::convertInt(void)
@@ -132,7 +137,7 @@ void			Convert::convertInt(void)
 	{
 		char c = static_cast<char>(li);
 		if (isprint(c))
-			std::cout << c << std::endl;
+			std::cout << "\'" << c << "\'" << std::endl;
 		else
 			std::cout << "non displayable" << std::endl;
 	}
@@ -156,7 +161,7 @@ void			Convert::convertFloat(void)
 	{
 		char c = static_cast<char>(f);
 		if (isprint(c))
-			std::cout << c << std::endl;
+			std::cout << "\'" << c << "\'" << std::endl;
 		else
 			std::cout << "non displayable" << std::endl;
 	}
@@ -184,7 +189,7 @@ void			Convert::convertDouble(void)
 	{
 		char c = static_cast<char>(d);
 		if (isprint(c))
-			std::cout << c << std::endl;
+			std::cout << "\'" << c << "\'" << std::endl;
 		else
 			std::cout << "non displayable" << std::endl;
 	}
