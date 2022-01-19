@@ -12,7 +12,6 @@ int main(int ac, char **av)
 	else
 	{
 		Convert arg(av[1]);
-		// arg.findType();
 		arg.whatType();
 	}
 	return (0);

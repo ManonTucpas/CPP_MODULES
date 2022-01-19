@@ -1,9 +1,9 @@
-NAME	=	convert
+NAME	=	base
 
-CC		=	c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address 
+CC		=	c++ -Wall -Wextra -Werror -std=c++98 #-fsanitize=address 
 
 SRCS	=	main.cpp \
-			Convert.cpp \
+			Base.cpp \
 			
 OBJS	=	${SRCS:.c=.o}
 

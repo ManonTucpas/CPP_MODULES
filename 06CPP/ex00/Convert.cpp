@@ -71,18 +71,18 @@ std::string			Convert::findType(void)
 		return (_type = "DOUBLE");
 	else if (dot > 0 && dot < (size - 2) && count == 2 && f == size - 1)
 		return (_type = "FLOAT");
-	return (NULL);
+	return ("NONE");
 }
 
 unsigned int	Convert::getIndex(void)
 {
-	std::string tab[6] = {"CHAR", "INT", "FLOAT", "DOUBLE", "NONE"};
+	std::string tab[4] = {"CHAR", "INT", "FLOAT", "DOUBLE"};
 	int			i;
 	
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < 4; i++)
 	{
 		if (_type == tab[i])
-			return (i + 1);
+			return (i);
 	}
 	return (-1);
 }
@@ -95,23 +95,22 @@ void			Convert::whatType(void)
 	{
 		switch(i)
 		{
-			case 1:
+			case 0:
 				convertChar();
 				break;
-			case 2:
+			case 1:
 				convertInt();
 				break;
-			case 3:
+			case 2:
 				convertFloat();
 				break;
-			case 4:
+			case 3:
 				convertDouble();
 				break;
-			default:
-				std::cout << "Wrong argument for conversion" << std::endl;
 		}
-		return ;
 	}
+	else 
+		std::cout << "Wrong argument for conversion" << std::endl;
 }
 
 void			Convert::convertChar(void)
@@ -119,7 +118,9 @@ void			Convert::convertChar(void)
 	char c = (_input.c_str()[0]);
 	std::cout << "CHAR  : \'" << c << "\'" << std::endl;
 	std::cout << "INT   : " << static_cast<int>(c) << std::endl;
+	std::cout << std::fixed;
 	std::cout << "FLOAT : " << static_cast<float>(c) << "f" << std::endl;
+	std::cout << std::fixed;
 	std::cout << "DOUBLE: " << static_cast<double>(c) << std::endl;
 }
 void			Convert::convertInt(void)
@@ -142,7 +143,9 @@ void			Convert::convertInt(void)
 			std::cout << "non displayable" << std::endl;
 	}
 	std::cout << "INT   : " << li << std::endl;
+	std::cout << std::fixed;
 	std::cout << "FLOAT : " << static_cast<float>(li) << "f" << std::endl;
+	std::cout << std::fixed;
 	std::cout << "DOUBLE: " << static_cast<double>(li) << std::endl;
 }
 
@@ -173,7 +176,6 @@ void			Convert::convertFloat(void)
 	std::cout << std::fixed;
 	std::cout << "FLOAT : " << f << "f" << std::endl;
 	std::cout << std::fixed;
-
 	std::cout << "DOUBLE: " << static_cast<double>(f) << std::endl;
 }
 
@@ -202,7 +204,7 @@ void			Convert::convertDouble(void)
 	else
 		std::cout << static_cast<int>(d) << std::endl;
 	std::cout << "FLOAT : ";
-	if (_input != "-inf" && _input != "+inf" 
+	if (_input != "inf" && _input != "+inf" 
 	&& (d < static_cast<double>(-FLT_MAX) || d > static_cast<double>(FLT_MAX)))
 		std::cout << "impossible" << std::endl;
 	else
