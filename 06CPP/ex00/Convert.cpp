@@ -170,7 +170,10 @@ void			Convert::convertFloat(void)
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<int>(f) << std::endl;
+	std::cout << std::fixed;
 	std::cout << "FLOAT : " << f << "f" << std::endl;
+	std::cout << std::fixed;
+
 	std::cout << "DOUBLE: " << static_cast<double>(f) << std::endl;
 }
 
@@ -203,6 +206,10 @@ void			Convert::convertDouble(void)
 	&& (d < static_cast<double>(-FLT_MAX) || d > static_cast<double>(FLT_MAX)))
 		std::cout << "impossible" << std::endl;
 	else
+	{
+		std::cout << std::fixed;
 		std::cout << static_cast<float>(d) << "f" << std::endl;
+	}
+	std::cout << std::fixed;
 	std::cout << "DOUBLE: " << d << std::endl;
 }
