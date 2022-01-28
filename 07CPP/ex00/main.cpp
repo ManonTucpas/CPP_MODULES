@@ -1,9 +1,23 @@
 #include <iostream>
 #include "Whatever.hpp"
 
-
 int main(void)
 {
+	std::cout << "****TEST FROM SUBJECT****" << std::endl;
+	int   l = 2;
+	int m = 3;
+	::swap( l, m );
+	std::cout << "l = " << l << ", m = " << m << std::endl;
+	std::cout << "min( l, m ) = " << ::min( l, m ) << std::endl;
+	std::cout << "max( l, m ) = " << ::max( l, m ) << std::endl;
+	std::string ce = "chaine1";
+	std::string de = "chaine2";
+	::swap(ce, de);
+	std::cout << "ce = " << ce << ", de = " << de << std::endl;
+	std::cout << "min( ce, de ) = " << ::min( ce, de ) << std::endl;
+	std::cout << "max( ce, de ) = " << ::max( ce, de ) << std::endl;
+
+
 	std::cout << "****TEST FOR DOUBLE****" << std::endl;
 	double a = 343.5;
 	double b = 21.21;
